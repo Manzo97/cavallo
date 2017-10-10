@@ -9,3 +9,5 @@ il codice se possibile va commentato.
 2* link: 
       http://fixbyproximity.com/2d-game-development-course/
 esempi su alcune cose.
+
+ATTENZIONE: ogni file che si vuole compilare andrà compliato con una lunga riga di g++ che ho allegato commentata nel file provone.cc

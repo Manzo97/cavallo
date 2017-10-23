@@ -65,7 +65,10 @@ int main(int argc, char **argv)
    player.image = new ALLEGRO_BITMAP * [player.maxFrame];
    LoadImmaginiG(player);
    for(int i=0;i < player.maxFrame;i++)
+   {
       al_convert_mask_to_alpha(player.image[i],al_map_rgb(0,0,0));
+      al_convert_mask_to_alpha(player.image[i],al_map_rgb(255,255,255));
+   }
 
    al_set_target_bitmap(al_get_backbuffer(display));
    event_queue = al_create_event_queue();
@@ -96,9 +99,9 @@ int main(int argc, char **argv)
             key[KEY_DOWN] = false;
             jump = false;
         }
-         if(key[KEY_UP] && player.posY >= SCREEN_H/3) {
+         if(key[KEY_UP] && player.posY >= SCREEN_H/10) {
            player.posY -= 10;
-         	if (player.posY<=SCREEN_H/3) {
+         	if (player.posY<=SCREEN_H/10) {
          		key[KEY_UP] = false;
          		key[KEY_DOWN]=true;
           }
@@ -200,9 +203,9 @@ int main(int argc, char **argv)
              }
            al_draw_bitmap(player.image[player.curFrame],player.posX,player.posY,0);
          }
-         else if(jump || key[KEY_DOWN])al_draw_bitmap(player.image[3],player.posX,player.posY,0);
+         //else if(jump || key[KEY_DOWN])al_draw_bitmap(player.image[3],player.posX,player.posY,0);
          else
-         al_draw_bitmap(player.image[0],player.posX,player.posY,0);
+         al_draw_bitmap(player.image[player.curFrame],player.posX,player.posY,0);
          al_flip_display();
       }
    }
